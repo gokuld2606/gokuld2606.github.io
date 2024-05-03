@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orcas - Conversion Calculator</title>
+    <style>
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: grey;
+           
+        }
+        header {
+            background-color: black;
+            color: #FF6700;
+            padding: 5px 0 ;
+            text-align: center;
+            
+        }
+        
+        
+        footer {
+            background-color: black;
+            color: #fff;
+            padding: 3px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            
+        }
+        nav {
+            background-color: #FF6700;
+            color: white;
+            padding: 10px;
+            text-align:center;
+        }
+        nav a {
+            color:#fff ;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: none;
+            color: black;
+        }
 
+ 
+      
+      
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CALCULO</h1>
+</header>
+
+<nav>
+    <a href="#bmi"> BMI Calculator</a>
+    <a href="#about us">About us</a>
+    <!-- Add more navigation links as needed -->
+</nav>
+
+
+    <div class="body">
+
+        <section id="bmi">
+            <h2>BMI Calculator</h2>
+            <form id="bmiForm">
+                <label for="bmiHeight">Enter height in meters:</label>
+                <input type="text" id="bmiHeight">
+                <label for="bmiWeight">Enter weight in kilograms:</label>
+                <input type="text" id="bmiWeight">
+                <input type="submit" value="Calculate BMI">
+            </form>
+            <p id="bmiResult"></p>
+        </section>
+        
+        <!-- Add more sections for additional functionalities -->
+    </div>
+
+    
+
+
+<footer>
+    <p>Designed and Developed by DG  </p>
+</footer>
+
+<script>
+
+
+    document.getElementById('bmiForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var height = parseFloat(document.getElementById('bmiHeight').value);
+        var weight = parseFloat(document.getElementById('bmiWeight').value);
+        var bmi = weight / (height * height);
+        document.getElementById('bmiResult').innerText = 'BMI: ' + bmi.toFixed(2);
+    });
+</script>
+
+</body>
+</html>
