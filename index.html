@@ -3,139 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <title>Orcas - Conversion Calculator</title>
-    <style>
-          body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url("BMI.jpg");
-            background-repeat: no-repeat;
-             background-attachment: fixed;
-             background-position: center;
-              
-              background-color: grey
-        }
-        header {
-            background-color: black;
-            color: #FF6700;
-            padding: 5px 0 ;
-            text-align: center;
-            
-        }
-        
-        
-        footer {
-            background-color: black;
-            color: #fff;
-            padding: 3px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            
-        }
-        nav {
-            background-color: #FF6700;
-            color: white;
-            padding: 10px;
-            text-align:center;
-        }
-        nav a {
-            color:#fff ;
-            text-decoration: none;
-            margin-right: 20px;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: none;
-            color: black;
-        }
-
- 
-    
-        .fa:hover {
-            opacity: 0.5;
-        }
- 
-        .fa-linkedin {
-            background: black;
-            color: white;
-        }
- 
-        .fa-pinterest {
-            background: black;
-            color: white;
-        }
- 
-        .fa-reddit {
-            background: black;
-            color: white;
-        }
- 
-        .fa {
-            padding: 10px;
-            font-size: 20px;
-            width: 30px;
-            text-decoration: none;
-            margin: 5px 50px;
-        }
-     
-      
-      
-    </style>
+    <title>Subscribe to Our Newsletter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
 </head>
-<body>
-
-<header>
-    <h1>CALCULO</h1>
-</header>
-
-<nav>
-    <a href="#bmi"> BMI Calculator</a>
-    <a href="#about us">About us</a>
-    <!-- Add more navigation links as needed -->
-</nav>
-
-
-    <div class="body">
-
-        <section id="bmi">
-            <h2>BMI Calculator</h2>
-            <form id="bmiForm">
-                <label for="bmiHeight">Enter height in meters:</label>
-                <input type="text" id="bmiHeight">
-                <label for="bmiWeight">Enter weight in kilograms:</label>
-                <input type="text" id="bmiWeight">
-                <input type="submit" value="Calculate BMI">
-            </form>
-            <p id="bmiResult"></p>
-        </section>
-        
-        <!-- Add more sections for additional functionalities -->
-    </div>
-
+<body class="bg-gray-100">
+    <header class="bg-blue-600 text-white py-6 shadow-md">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
+            <h1 class="text-2xl font-bold">Newsletter</h1>
+            <nav class="mt-4 md:mt-0">
+                <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 text-center">
+                    <li><a href="#" class="hover:underline">Home</a></li>
+                    <li><a href="#about" class="hover:underline">About</a></li>
+                    <li><a href="#subscribe" class="hover:underline">Subscribe</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     
+    <section class="text-center py-20 bg-blue-50 px-4 md:px-0">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Stay Updated with Our Newsletter</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Subscribe to receive the latest news and updates straight to your inbox.</p>
+    </section>
+    
+    <section id="subscribe" class="py-16 px-4 flex justify-center">
+        <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg max-w-md w-full text-center">
+            <h3 class="text-2xl font-semibold mb-4">Subscribe Now</h3>
+            <form id="subscribe-form" class="space-y-4">
+                <input type="text" id="name" placeholder="Your Name" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400" required>
+                <input type="email" id="email" placeholder="Your Email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400" required>
+                <input type="tel" id="phone" placeholder="Your Phone Number" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400" required>
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">Subscribe</button>
+            </form>
+            <p id="response-message" class="mt-4 text-green-600 hidden">Subscription successful!</p>
+        </div>
+    </section>
+    
+    <footer class="bg-gray-800 text-white text-center py-6 mt-16 px-4">
+        <p>&copy; 2025 Newsletter. All Rights Reserved.</p>
+    </footer>
 
-
-<footer>
-    <p>Designed and Developed by DG  <a href="#" class="fa fa-linkedin"></a>
-        <a href="#" class="fa fa-pinterest"></a>
-        <a href="#" class="fa fa-reddit"></a></p>
-</footer>
-
-<script>
-
-
-    document.getElementById('bmiForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        var height = parseFloat(document.getElementById('bmiHeight').value);
-        var weight = parseFloat(document.getElementById('bmiWeight').value);
-        var bmi = weight / (height * height);
-        document.getElementById('bmiResult').innerText = 'BMI: ' + bmi.toFixed(2);
-    });
-</script>
-
+    <script>
+        document.getElementById('subscribe-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            try {
+                const response = await axios.post('http://localhost:3000/subscribe', { name, email, phone });
+                document.getElementById('response-message').classList.remove('hidden');
+            } catch (error) {
+                alert('Subscription failed. Please try again.');
+            }
+        });
+    </script>
 </body>
 </html>
